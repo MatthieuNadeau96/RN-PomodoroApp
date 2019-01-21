@@ -7,8 +7,6 @@ import {
 
 import moment from 'moment'
 
-
-
 export default class MyComponent extends Component {
   render() {
     const duration = moment.duration(this.props.interval)
@@ -28,17 +26,3 @@ const styles = StyleSheet.create({
     fontWeight: '200',
   },
 });
-
-// import React from 'react'
-// import {
-//   View,
-//   Text,
-//   StyleSheet,
-// } from 'react-native'
-//
-//
-//
-// const Timer = (props) => (
-// )
-//
-// export default Timer;
