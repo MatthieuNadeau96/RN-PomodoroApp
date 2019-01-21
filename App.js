@@ -1,15 +1,11 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View} from 'react-native'
 
-import Timer from './src/components/Timer'
-import ButtonsRow from './src/components/ButtonsRow/ButtonsRow'
-
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Timer />
-        <ButtonsRow />
+        <Text>Hi</Text>
       </View>
     );
   }
