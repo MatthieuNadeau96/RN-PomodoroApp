@@ -6,10 +6,15 @@ import {
 } from 'react-native';
 
 export default class Timer extends Component {
+
+  state = {
+    data: "25:00"
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>I'm the Timer component</Text>
+        <Text>{this.state.data}</Text>
       </View>
     );
   }
@@ -18,5 +23,7 @@ export default class Timer extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
