@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
 import {
   View,
   Text,
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
+
+import moment from 'moment'
 
 const Timer = (props) => (
   <View>
     <Text style={styles.timer}>{props.interval}</Text>
   </View>
-);
+)
 
 export default Timer;
 
@@ -19,4 +21,4 @@ const styles = StyleSheet.create({
     fontSize: 76,
     fontWeight: '200',
   },
-});
+})
