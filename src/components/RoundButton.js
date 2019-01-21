@@ -5,10 +5,13 @@ import {
   StyleSheet,
 } from 'react-native';
 
+
 export default class RoundButton extends Component {
   render() {
+
     let background = this.props.background
     let color = this.props.color
+
     return (
       <View style={[ styles.button, {backgroundColor: background}]}>
         <Text style={[ styles.buttonText, {color}]}>{this.props.title}</Text>
