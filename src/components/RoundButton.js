@@ -10,13 +10,22 @@ export default class RoundButton extends Component {
     let background = this.props.background
     let color = this.props.color
     return (
-      <View style={{backgroundColor: background}}>
-        <Text style={{color}}>{this.props.title}</Text>
+      <View style={[ styles.button, {backgroundColor: background}]}>
+        <Text style={[ styles.buttonText, {color}]}>{this.props.title}</Text>
       </View>
     );
   }
 }
 
-// const styles = StyleSheet.create({
-//
-// });
+const styles = StyleSheet.create({
+  button: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 18,
+  }
+});

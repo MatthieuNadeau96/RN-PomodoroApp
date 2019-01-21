@@ -13,7 +13,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Timer interval={this.state.timer}/>
-        <RoundButton title='Start' color='#eeeeee' background='#bbdaac' />
+        <RoundButton title='Start' color='#eeeeee' background='#679462' />
       </View>
     )
   }
