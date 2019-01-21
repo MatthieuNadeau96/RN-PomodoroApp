@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react'
+import {Platform, StyleSheet, Text, View} from 'react-native'
+
+import Timer from './src/components/Timer';
 
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello</Text>
+        <Timer />
       </View>
     );
   }
