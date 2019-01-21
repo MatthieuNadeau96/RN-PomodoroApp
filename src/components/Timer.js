@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-} from 'react-native'
+} from 'react-native';
 
 import moment from 'moment'
 
-const Timer = (props) => (
-  <View>
-    <Text style={styles.timer}>{props.interval}</Text>
-  </View>
-)
 
-export default Timer;
+
+export default class MyComponent extends Component {
+  render() {
+    const duration = moment.duration(this.props.interval)
+    const centiseconds = Math.floor(duration.milliseconds() / 10)
+    return (
+      <Text style={styles.timer}>
+        {duration.minutes()}:{duration.seconds()}.{centiseconds}
+      </Text>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
   timer: {
@@ -21,4 +27,18 @@ const styles = StyleSheet.create({
     fontSize: 76,
     fontWeight: '200',
   },
-})
+});
+
+// import React from 'react'
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+// } from 'react-native'
+//
+//
+//
+// const Timer = (props) => (
+// )
+//
+// export default Timer;

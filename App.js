@@ -5,7 +5,7 @@ import Timer from './src/components/Timer'
 
 export default class App extends Component<Props> {
   state = {
-    timer: 12325,
+    timer: 1234567,
   }
 
   render() {
