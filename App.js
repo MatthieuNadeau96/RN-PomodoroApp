@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View} from 'react-native'
 
 import Timer from './src/components/Timer'
+import RoundButton from './src/components/RoundButton'
 
 export default class App extends Component<Props> {
   state = {
@@ -12,6 +13,7 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Timer interval={this.state.timer}/>
+        <RoundButton title='Start' color='#eeeeee' background='#bbdaac' />
       </View>
     )
   }
