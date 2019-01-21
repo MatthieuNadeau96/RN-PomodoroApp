@@ -14,7 +14,7 @@ export default class Timer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.data}</Text>
+        <Text style={styles.timerText}>{this.state.data}</Text>
       </View>
     );
   }
@@ -26,4 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  timerText: {
+    fontSize: 68,
+    color: 'rgb(94, 94, 94)'
+  }
 });
