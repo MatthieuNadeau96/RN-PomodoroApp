@@ -11,9 +11,9 @@ import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 export default class App extends Component<Props> {
 
   state = {
-    seconds: 1500,
+    seconds: 5,
     time: {},
-    // counting: false,
+    counting: false,
     // mode: 'WORK',
     // progressBarCountdown: 100,
     // workCount: 0,
@@ -53,12 +53,23 @@ export default class App extends Component<Props> {
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
-    });
+    })
+    if (seconds === 0) {
+      // alarm
+      this.pauseTimer()
+    }
   }
 
   startTimer = () => {
+    this.setState({counting: true})
     this.myInterval = setInterval(this.countDown, 1000)
-    // this.timerCountDown()
+    this.timerCountDown()
+  }
+
+  pauseTimer = () => {
+    clearInterval(this.myInterval);
+    clearInterval(this.progress);
+    this.setState({ counting: false })
   }
 
   timerCountDown = () => {
@@ -90,10 +101,10 @@ export default class App extends Component<Props> {
             background='#6a6a6a'
           />
           <PlayPauseButton
+            pressed={this.startTimer}
             title={PlayIcon}
             color='#eeeeee'
             background='#679462'
-            onPress={this.startTimer}
           />
           <StopSkipButtons
             title={StopIcon}

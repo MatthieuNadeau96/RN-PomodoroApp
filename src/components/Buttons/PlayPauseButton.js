@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 
 
@@ -13,9 +14,9 @@ export default class PlayPauseButton extends Component {
     let color = this.props.color
 
     return (
-      <View style={[ styles.button, {backgroundColor: background}]}>
+      <TouchableOpacity onPress={this.props.pressed} style={[ styles.button, {backgroundColor: background}]}>
         <Text style={[ styles.buttonText, {color}]}>{this.props.title}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
