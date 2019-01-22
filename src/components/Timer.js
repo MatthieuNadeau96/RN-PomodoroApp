@@ -7,13 +7,14 @@ import {
 
 import moment from 'moment'
 
+
 export default class MyComponent extends Component {
+
+
   render() {
-    const duration = moment.duration(this.props.interval)
-    const centiseconds = Math.floor(duration.milliseconds() / 10)
     return (
       <Text style={styles.timer}>
-        {duration.minutes()}:{duration.seconds()}.{centiseconds}
+        {this.props.time.m}:{this.props.time.s}
       </Text>
     )
   }
