@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 
-export default class RoundButton extends Component {
+export default class PlayPauseButton extends Component {
   render() {
 
     let background = this.props.background
@@ -22,13 +22,13 @@ export default class RoundButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    width: 80,
-    height: 80,
+    width: 50,
+    height: 50,
     borderRadius: 40,
     justifyContent: 'center',
     alignItems: 'center'
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 12,
   }
 });
