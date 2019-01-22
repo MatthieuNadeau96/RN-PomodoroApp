@@ -14,8 +14,10 @@ export default class App extends Component<Props> {
     seconds: 5,
     time: {},
     counting: false,
-    // mode: 'WORK',
-    // progressBarCountdown: 100,
+    mode: 'WORK',
+    workTimer: 5,
+    breakTimer: 2,
+    bigBreakTimer: 10,
     // workCount: 0,
     // workCountTotal: 4
   }
@@ -61,8 +63,19 @@ export default class App extends Component<Props> {
   }
 
   startTimer = () => {
+    const { mode } = this.state
+
     this.setState({counting: true})
-    this.myInterval = setInterval(this.countDown, 1000)
+
+    if(mode === 'WORK') {
+      this.myInterval = setInterval(this.countDown, 1000);
+    }
+    if (mode === 'BREAK') {
+      this.myInterval = setInterval(this.countDown, 1000);
+    }
+    else if (mode === 'BIGBREAK') {
+      this.myInterval = setInterval(this.countDown, 1000);
+    }
     this.timerCountDown()
   }
 
@@ -70,6 +83,27 @@ export default class App extends Component<Props> {
     clearInterval(this.myInterval);
     clearInterval(this.progress);
     this.setState({ counting: false })
+  }
+
+  stopTimer = () => {
+    const { workTimer, breakTimer, bigBreakTimer, counting, mode } = this.state
+    if(!counting) {
+      return
+    }
+    this.pauseTimer()
+    if(mode === 'WORK') {
+    this.resetDisplay(workTimer)
+    this.setState({seconds: workTimer})
+    }
+    if (mode === 'BREAK') {
+    this.resetDisplay(breakTimer)
+    this.setState({seconds: breakTimer})
+    }
+    else if (mode === 'BIGBREAK') {
+    this.resetDisplay(bigBreakTimer)
+    this.setState({seconds: bigBreakTimer})
+    }
+    this.setState({progressBarCountdown: 100})
   }
 
   timerCountDown = () => {
@@ -89,6 +123,7 @@ export default class App extends Component<Props> {
 
   render() {
     const PlayIcon = (<Icon name="play" size={20} color="#ececec" />)
+    const PauseIcon = (<Icon name="pause" size={20} color="#ececec" />)
     const StopIcon = (<Icon name="stop" size={20} color="#ececec" />)
     const SkipIcon = (<Icon name="step-forward" size={20} color="#ececec" />)
     return (
@@ -100,12 +135,24 @@ export default class App extends Component<Props> {
             color='#eeeeee'
             background='#6a6a6a'
           />
+        {  // play or pause logic
+          this.state.counting ?
+          // pause button
+          <PlayPauseButton
+            pressed={this.pauseTimer}
+            title={PauseIcon}
+            color='#eeeeee'
+            background='#679462'
+          /> :
+          // play button
           <PlayPauseButton
             pressed={this.startTimer}
             title={PlayIcon}
             color='#eeeeee'
             background='#679462'
           />
+        }
+
           <StopSkipButtons
             title={StopIcon}
             color='#eeeeee'
