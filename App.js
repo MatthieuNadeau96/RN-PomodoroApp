@@ -36,9 +36,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fcfcfc',
     paddingTop: 130,
+    paddingHorizontal: 30,
   },
   buttonRow: {
     flexDirection: 'row',
+    alignSelf: 'stretch',
     alignItems: 'center',
-  }
+    justifyContent: 'center',
+    paddingTop: 60,
+  },
 })

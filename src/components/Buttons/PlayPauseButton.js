@@ -21,14 +21,14 @@ export default class PlayPauseButton extends Component {
 }
 
 const styles = StyleSheet.create({
+  buttonText: {
+    fontSize: 30,
+  },
   button: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 130,
+    height: 130,
+    borderRadius: 70,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  buttonText: {
-    fontSize: 18,
-  }
 });
