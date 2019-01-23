@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
+import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class App extends Component<Props> {
@@ -177,7 +178,6 @@ export default class App extends Component<Props> {
             pressed={this.startTimer}
             title={PlayIcon}
             color='#eeeeee'
-            background='#679462'
           />
         }
           <StopSkipButtons
