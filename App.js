@@ -143,6 +143,7 @@ export default class App extends Component<Props> {
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
           <StopSkipButtons
+            pressed={this.stopTimer}
             title={StopIcon}
             color='#eeeeee'
             background='#6a6a6a'
