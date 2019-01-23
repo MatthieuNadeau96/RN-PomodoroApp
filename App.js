@@ -18,8 +18,8 @@ export default class App extends Component<Props> {
     workTimer: 5,
     breakTimer: 2,
     bigBreakTimer: 10,
-    // workCount: 0,
-    // workCountTotal: 4
+    completedWorkCount: 0,
+    workCountTotal: 2
   }
 
   componentDidMount = () => {
@@ -29,6 +29,7 @@ export default class App extends Component<Props> {
   resetDisplay = (secs) => {
     let timeLeftVar = this.secondsToTime(secs);
     this.setState({ time: timeLeftVar });
+    alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount);
   }
 
   secondsToTime = (secs) => {
@@ -51,13 +52,31 @@ export default class App extends Component<Props> {
   }
 
   countDown = () => {
-    let seconds = this.state.seconds - 1;
+    const { workTimer, breakTimer, bigBreakTimer, mode, completedWorkCount, workCountTotal } = this.state
+    let seconds = this.state.seconds - 1
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
     })
     if (seconds === 0) {
       // alarm
+      if (mode === 'WORK' && completedWorkCount === workCountTotal) {
+        this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
+        this.resetDisplay(bigBreakTimer);
+      }
+      if (mode === 'WORK' && completedWorkCount < workCountTotal) {
+        this.setState({ mode: 'BREAK', seconds: breakTimer, completedWorkCount: completedWorkCount + 1 })
+        this.resetDisplay(breakTimer);
+      }
+      if (mode === 'BREAK') {
+        this.setState({ mode: 'WORK', seconds: workTimer, })
+        this.resetDisplay(workTimer);
+      }
+      if (mode === 'BIGBREAK') {
+        this.setState({ mode: 'WORK', seconds: workTimer, completedWorkCount: 0 })
+        this.resetDisplay(workTimer);
+      }
+
       this.pauseTimer()
     }
   }
@@ -67,15 +86,8 @@ export default class App extends Component<Props> {
 
     this.setState({counting: true})
 
-    if(mode === 'WORK') {
-      this.myInterval = setInterval(this.countDown, 1000);
-    }
-    if (mode === 'BREAK') {
-      this.myInterval = setInterval(this.countDown, 1000);
-    }
-    else if (mode === 'BIGBREAK') {
-      this.myInterval = setInterval(this.countDown, 1000);
-    }
+
+    this.myInterval = setInterval(this.countDown, 1000);
     this.timerCountDown()
   }
 
@@ -135,6 +147,7 @@ export default class App extends Component<Props> {
             color='#eeeeee'
             background='#6a6a6a'
           />
+
         {  // play or pause logic
           this.state.counting ?
           // pause button
