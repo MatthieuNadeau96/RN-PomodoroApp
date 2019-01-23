@@ -131,6 +131,23 @@ export default class App extends Component<Props> {
 
   }
 
+  skipTimer = () => {
+    const { mode, workTimer, breakTimer, bigBreakTimer } = this.state
+    if (mode === 'WORK') {
+      this.setState({ mode: 'BREAK', seconds: breakTimer })
+      this.resetDisplay(breakTimer);
+    }
+    if (mode === 'BREAK') {
+      this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
+      this.resetDisplay(bigBreakTimer);
+    }
+    if (mode === 'BIGBREAK') {
+      this.setState({ mode: 'WORK', seconds: workTimer })
+      this.resetDisplay(workTimer);
+    }
+
+  }
+
 
 
   render() {
@@ -167,6 +184,7 @@ export default class App extends Component<Props> {
           />
         }
           <StopSkipButtons
+            pressed={this.skipTimer}
             title={SkipIcon}
             color='#eeeeee'
             background='#6a6a6a'
