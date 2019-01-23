@@ -99,9 +99,6 @@ export default class App extends Component<Props> {
 
   stopTimer = () => {
     const { workTimer, breakTimer, bigBreakTimer, counting, mode } = this.state
-    if(!counting) {
-      return
-    }
     this.pauseTimer()
     if(mode === 'WORK') {
     this.resetDisplay(workTimer)
