@@ -14,7 +14,7 @@ export default class PlayPauseButton extends Component {
 
     return (
       <View style={[ styles.button, {backgroundColor: background}]}>
-        <Text style={[ styles.buttonText, {color}]}>{this.props.title}</Text>
+        <Text style={{color}}>{this.props.title}</Text>
       </View>
     );
   }
@@ -28,8 +28,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
-  },
-  buttonText: {
-    fontSize: 12,
   }
 });

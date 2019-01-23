@@ -15,16 +15,13 @@ export default class PlayPauseButton extends Component {
 
     return (
       <TouchableOpacity onPress={this.props.pressed} style={[ styles.button, {backgroundColor: background}]}>
-        <Text style={[ styles.buttonText, {color}]}>{this.props.title}</Text>
+        <Text style={{color}}>{this.props.title}</Text>
       </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  buttonText: {
-    fontSize: 30,
-  },
   button: {
     width: 130,
     height: 130,

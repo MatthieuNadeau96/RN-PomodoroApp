@@ -29,7 +29,7 @@ export default class App extends Component<Props> {
   resetDisplay = (secs) => {
     let timeLeftVar = this.secondsToTime(secs);
     this.setState({ time: timeLeftVar });
-    alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount);
+    // alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount);
   }
 
   secondsToTime = (secs) => {
@@ -134,10 +134,10 @@ export default class App extends Component<Props> {
 
 
   render() {
-    const PlayIcon = (<Icon name="play" size={20} color="#ececec" />)
-    const PauseIcon = (<Icon name="pause" size={20} color="#ececec" />)
-    const StopIcon = (<Icon name="stop" size={20} color="#ececec" />)
-    const SkipIcon = (<Icon name="step-forward" size={20} color="#ececec" />)
+    const PlayIcon = (<Icon name="play" size={40} color="#ececec" />)
+    const PauseIcon = (<Icon name="pause" size={35} color="#ececec" />)
+    const StopIcon = (<Icon name="stop" size={14} color="#ececec" />)
+    const SkipIcon = (<Icon name="step-forward" size={14} color="#ececec" />)
     return (
       <View style={styles.container}>
         <Timer time={this.state.time}/>
