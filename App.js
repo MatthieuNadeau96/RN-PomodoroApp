@@ -11,7 +11,7 @@ import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 export default class App extends Component<Props> {
 
   state = {
-    seconds: 5,
+    seconds: 1500,
     time: {},
     counting: false,
     mode: 'WORK',

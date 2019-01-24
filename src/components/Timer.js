@@ -23,7 +23,7 @@ export default class MyComponent extends Component {
 const styles = StyleSheet.create({
   timer: {
     color: '#6c6c6c',
-    fontSize: 76,
-    fontWeight: '200',
+    fontSize: 100,
+    fontWeight: '900',
   },
 })
