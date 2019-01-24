@@ -159,24 +159,23 @@ export default class App extends Component<Props> {
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
 
-          <TouchableOpacity onPress={this.stopTimer}>
+          <TouchableOpacity activeOpacity={.8} onPress={this.stopTimer}>
             <StopSkipButtons title={StopIcon} />
           </TouchableOpacity>
 
           {
             this.state.counting ?
 
-            <TouchableOpacity onPress={this.pauseTimer}>
+            <TouchableOpacity activeOpacity={.8} onPress={this.pauseTimer}>
               <PlayPauseButton title={PauseIcon} />
             </TouchableOpacity> :
 
-            <TouchableOpacity onPress={this.startTimer}>
+            <TouchableOpacity activeOpacity={.8} onPress={this.startTimer}>
               <PlayPauseButton title={PlayIcon} />
             </TouchableOpacity>
-
           }
 
-          <TouchableOpacity onPress={this.skipTimer}>
+          <TouchableOpacity activeOpacity={.8} onPress={this.skipTimer}>
             <StopSkipButtons title={SkipIcon} />
           </TouchableOpacity>
 
@@ -190,8 +189,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fcfcfc',
-    paddingTop: 130,
+    backgroundColor: '#ffffff',
+    paddingTop: 160,
     paddingHorizontal: 30,
   },
   buttonRow: {
