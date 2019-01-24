@@ -148,10 +148,12 @@ export default class App extends Component<Props> {
 
 
   render() {
-    const PlayIcon = (<Icon name="play" size={40} color="#ececec" />)
-    const PauseIcon = (<Icon name="pause" size={35} color="#ececec" />)
-    const StopIcon = (<Icon name="stop" size={14} color="#ececec" />)
-    const SkipIcon = (<Icon name="step-forward" size={14} color="#ececec" />)
+    const iconColor = '#eea13a' // <-- icon font color
+    
+    const PlayIcon = (<Icon name="play" size={40} color={iconColor} />)
+    const PauseIcon = (<Icon name="pause" size={35} color={iconColor} />)
+    const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
+    const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
     return (
       <View style={styles.container}>
         <Timer time={this.state.time}/>
