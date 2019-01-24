@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class PlayPauseButton extends Component {
   render() {
@@ -14,8 +15,10 @@ export default class PlayPauseButton extends Component {
     let color = this.props.color
 
     return (
-      <TouchableOpacity onPress={this.props.pressed} style={[ styles.button, {backgroundColor: background}]}>
-        <Text style={{color}}>{this.props.title}</Text>
+      <TouchableOpacity onPress={this.props.pressed}>
+        <LinearGradient colors={['#6a6a6a', '#5d5d5d', '#333333']} style={styles.button}>
+          <Text style={{color}}>{this.props.title}</Text>
+        </LinearGradient>
       </TouchableOpacity>
     );
   }

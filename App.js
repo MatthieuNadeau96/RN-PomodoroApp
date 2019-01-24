@@ -159,8 +159,6 @@ export default class App extends Component<Props> {
           <StopSkipButtons
             pressed={this.stopTimer}
             title={StopIcon}
-            color='#eeeeee'
-            background='#6a6a6a'
           />
           {  // play or pause logic
             this.state.counting ?
@@ -178,8 +176,6 @@ export default class App extends Component<Props> {
           <StopSkipButtons
             pressed={this.skipTimer}
             title={SkipIcon}
-            color='#eeeeee'
-            background='#6a6a6a'
           />
         </View>
       </View>
