@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet, Text, View} from 'react-native'
+import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -148,8 +148,8 @@ export default class App extends Component<Props> {
 
 
   render() {
-    const iconColor = '#eea13a' // <-- icon font color
-    
+    const iconColor = '#fafafa' // <-- icon font color
+
     const PlayIcon = (<Icon name="play" size={40} color={iconColor} />)
     const PauseIcon = (<Icon name="pause" size={35} color={iconColor} />)
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
@@ -158,27 +158,28 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
-          <StopSkipButtons
-            pressed={this.stopTimer}
-            title={StopIcon}
-          />
-          {  // play or pause logic
+
+          <TouchableOpacity onPress={this.stopTimer}> 
+            <StopSkipButtons title={StopIcon} />
+          </TouchableOpacity>
+
+          {
             this.state.counting ?
-            // pause button
-            <PlayPauseButton
-              pressed={this.pauseTimer}
-              title={PauseIcon}
-              /> :
-              // play button
-              <PlayPauseButton
-                pressed={this.startTimer}
-                title={PlayIcon}
-                />
-            }
-          <StopSkipButtons
-            pressed={this.skipTimer}
-            title={SkipIcon}
-          />
+
+            <TouchableOpacity onPress={this.pauseTimer}>
+              <PlayPauseButton title={PauseIcon} />
+            </TouchableOpacity> :
+
+            <TouchableOpacity onPress={this.startTimer}>
+              <PlayPauseButton title={PlayIcon} />
+            </TouchableOpacity>
+
+          }
+
+          <TouchableOpacity onPress={this.skipTimer}>
+            <StopSkipButtons title={SkipIcon} />
+          </TouchableOpacity>
+
         </View>
       </View>
     )
