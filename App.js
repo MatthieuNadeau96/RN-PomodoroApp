@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
-import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class App extends Component<Props> {
@@ -163,23 +162,19 @@ export default class App extends Component<Props> {
             color='#eeeeee'
             background='#6a6a6a'
           />
-
-        {  // play or pause logic
-          this.state.counting ?
-          // pause button
-          <PlayPauseButton
-            pressed={this.pauseTimer}
-            title={PauseIcon}
-            color='#eeeeee'
-            background='#679462'
-          /> :
-          // play button
-          <PlayPauseButton
-            pressed={this.startTimer}
-            title={PlayIcon}
-            color='#eeeeee'
-          />
-        }
+          {  // play or pause logic
+            this.state.counting ?
+            // pause button
+            <PlayPauseButton
+              pressed={this.pauseTimer}
+              title={PauseIcon}
+              /> :
+              // play button
+              <PlayPauseButton
+                pressed={this.startTimer}
+                title={PlayIcon}
+                />
+            }
           <StopSkipButtons
             pressed={this.skipTimer}
             title={SkipIcon}
@@ -206,5 +201,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 60,
-  },
+  }
 })
