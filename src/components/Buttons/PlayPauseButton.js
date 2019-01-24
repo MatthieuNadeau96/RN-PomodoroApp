@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Text,
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
-import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient'
 
 export default class PlayPauseButton extends Component {
   render() {
@@ -14,7 +14,7 @@ export default class PlayPauseButton extends Component {
       <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.button}>
         <Text>{this.props.title}</Text>
       </LinearGradient>
-    );
+    )
   }
 }
 
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-});
+})

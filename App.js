@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
@@ -23,32 +23,32 @@ export default class App extends Component<Props> {
   }
 
   componentDidMount = () => {
-    this.resetDisplay(this.state.seconds);
+    this.resetDisplay(this.state.seconds)
   }
 
   resetDisplay = (secs) => {
-    let timeLeftVar = this.secondsToTime(secs);
-    this.setState({ time: timeLeftVar });
-    // alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount);
+    let timeLeftVar = this.secondsToTime(secs)
+    this.setState({ time: timeLeftVar })
+    // alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount)
   }
 
   secondsToTime = (secs) => {
-    let hours = Math.floor(secs / (60 * 60));
-    let divisor_for_minutes = secs % (60 * 60);
-    let minutes = Math.floor(divisor_for_minutes / 60);
-    let divisor_for_seconds = divisor_for_minutes % 60;
-    let seconds = Math.ceil(divisor_for_seconds);
+    let hours = Math.floor(secs / (60 * 60))
+    let divisor_for_minutes = secs % (60 * 60)
+    let minutes = Math.floor(divisor_for_minutes / 60)
+    let divisor_for_seconds = divisor_for_minutes % 60
+    let seconds = Math.ceil(divisor_for_seconds)
 
     if (seconds < 10) {
-      seconds = '0' + seconds;
+      seconds = '0' + seconds
     }
 
     let obj = {
       "h": hours,
       "m": minutes,
       "s": seconds
-    };
-    return obj;
+    }
+    return obj
   }
 
   countDown = () => {
@@ -62,19 +62,19 @@ export default class App extends Component<Props> {
       // alarm
       if (mode === 'WORK' && completedWorkCount === workCountTotal) {
         this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
-        this.resetDisplay(bigBreakTimer);
+        this.resetDisplay(bigBreakTimer)
       }
       if (mode === 'WORK' && completedWorkCount < workCountTotal) {
         this.setState({ mode: 'BREAK', seconds: breakTimer, completedWorkCount: completedWorkCount + 1 })
-        this.resetDisplay(breakTimer);
+        this.resetDisplay(breakTimer)
       }
       if (mode === 'BREAK') {
         this.setState({ mode: 'WORK', seconds: workTimer, })
-        this.resetDisplay(workTimer);
+        this.resetDisplay(workTimer)
       }
       if (mode === 'BIGBREAK') {
         this.setState({ mode: 'WORK', seconds: workTimer, completedWorkCount: 0 })
-        this.resetDisplay(workTimer);
+        this.resetDisplay(workTimer)
       }
 
       this.pauseTimer()
@@ -87,13 +87,13 @@ export default class App extends Component<Props> {
     this.setState({counting: true})
 
 
-    this.myInterval = setInterval(this.countDown, 1000);
+    this.myInterval = setInterval(this.countDown, 1000)
     this.timerCountDown()
   }
 
   pauseTimer = () => {
-    clearInterval(this.myInterval);
-    clearInterval(this.progress);
+    clearInterval(this.myInterval)
+    clearInterval(this.progress)
     this.setState({ counting: false })
   }
 
@@ -119,12 +119,12 @@ export default class App extends Component<Props> {
     const { seconds } = this.state
     this.progress = setInterval(() => {
       if (seconds <= 0) {
-        clearInterval(this.progress);
+        clearInterval(this.progress)
       }
       this.setState( prevState => ({
         progressBarCountdown: prevState.progressBarCountdown - 1
       }))
-    }, 1000 / (100 / seconds));
+    }, 1000 / (100 / seconds))
 
   }
 
@@ -132,15 +132,15 @@ export default class App extends Component<Props> {
     const { mode, workTimer, breakTimer, bigBreakTimer } = this.state
     if (mode === 'WORK') {
       this.setState({ mode: 'BREAK', seconds: breakTimer })
-      this.resetDisplay(breakTimer);
+      this.resetDisplay(breakTimer)
     }
     if (mode === 'BREAK') {
       this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
-      this.resetDisplay(bigBreakTimer);
+      this.resetDisplay(bigBreakTimer)
     }
     if (mode === 'BIGBREAK') {
       this.setState({ mode: 'WORK', seconds: workTimer })
-      this.resetDisplay(workTimer);
+      this.resetDisplay(workTimer)
     }
 
   }
@@ -159,7 +159,7 @@ export default class App extends Component<Props> {
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
 
-          <TouchableOpacity onPress={this.stopTimer}> 
+          <TouchableOpacity onPress={this.stopTimer}>
             <StopSkipButtons title={StopIcon} />
           </TouchableOpacity>
 

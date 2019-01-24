@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   View,
   Text,
   StyleSheet,
-} from 'react-native';
+} from 'react-native'
 
 import moment from 'moment'
 
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     fontSize: 76,
     fontWeight: '200',
   },
-});
+})
