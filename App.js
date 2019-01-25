@@ -11,7 +11,7 @@ import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 export default class App extends Component<Props> {
 
   state = {
-    seconds: 1500,
+    seconds: 5,
     time: {},
     counting: false,
     mode: 'WORK',
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F8F8F6',
     paddingTop: 160,
     paddingHorizontal: 30,
   },

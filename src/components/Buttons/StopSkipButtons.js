@@ -11,7 +11,7 @@ export default class PlayPauseButton extends Component {
   render() {
 
     return (
-      <LinearGradient colors={['#8D8D8D', '#6A6A6A', '#575757']} locations={[0,0.6,1]} style={styles.button}>
+      <LinearGradient colors={['#114411', '#0B2E0B', '#071f07']} locations={[0,0.6,1]} style={styles.button}>
         <Text>{this.props.title}</Text>
       </LinearGradient>
     )
