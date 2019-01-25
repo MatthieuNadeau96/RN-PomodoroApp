@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import LinearGradient from 'react-native-linear-gradient'
 
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
@@ -155,7 +156,7 @@ export default class App extends Component<Props> {
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
     return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
 
@@ -180,7 +181,7 @@ export default class App extends Component<Props> {
           </TouchableOpacity>
 
         </View>
-      </View>
+      </LinearGradient>
     )
   }
 }
