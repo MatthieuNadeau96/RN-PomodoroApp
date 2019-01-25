@@ -60,11 +60,11 @@ export default class App extends Component<Props> {
     })
     if (seconds === 0) {
       // alarm
-      if (mode === 'WORK' && completedWorkCount === workTotalForBigBreak) {
-        this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
+      if (mode === 'WORK' && completedWorkCount === workTotalForBigBreak - 1) {
         this.resetDisplay(bigBreakTimer)
+        this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer})
       }
-      if (mode === 'WORK' && completedWorkCount < workTotalForBigBreak) {
+      else if (mode === 'WORK' && completedWorkCount !== workTotalForBigBreak) {
         this.setState({ mode: 'BREAK', seconds: breakTimer, completedWorkCount: completedWorkCount + 1 })
         this.resetDisplay(breakTimer)
       }
