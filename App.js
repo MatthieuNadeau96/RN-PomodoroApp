@@ -11,7 +11,6 @@ import WorkCounter from './src/components/WorkCounter'
 
 
 export default class App extends Component<Props> {
-
   state = {
     seconds: 5,
     time: {},
@@ -31,7 +30,6 @@ export default class App extends Component<Props> {
   resetDisplay = (secs) => {
     let timeLeftVar = this.secondsToTime(secs)
     this.setState({ time: timeLeftVar })
-    // alert('mode: ' + this.state.mode + '\ncompletedWork: ' + this.state.completedWorkCount)
   }
 
   secondsToTime = (secs) => {
@@ -78,17 +76,13 @@ export default class App extends Component<Props> {
         this.setState({ mode: 'WORK', seconds: workTimer, completedWorkCount: 0 })
         this.resetDisplay(workTimer)
       }
-
       this.pauseTimer()
     }
   }
 
   startTimer = () => {
     const { mode } = this.state
-
     this.setState({counting: true})
-
-
     this.myInterval = setInterval(this.countDown, 1000)
     this.timerCountDown()
   }
@@ -127,7 +121,6 @@ export default class App extends Component<Props> {
         progressBarCountdown: prevState.progressBarCountdown - 1
       }))
     }, 1000 / (100 / seconds))
-
   }
 
   skipTimer = () => {
@@ -147,41 +140,33 @@ export default class App extends Component<Props> {
 
   }
 
-
-
   render() {
     const iconColor = '#fafafa' // <-- icon font color
-
     const PlayIcon = (<Icon name="play" size={40} color={iconColor} />)
     const PauseIcon = (<Icon name="pause" size={35} color={iconColor} />)
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
+
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
         <WorkCounter workCounter={this.state.completedWorkCount} />
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
-
           <TouchableOpacity activeOpacity={.8} onPress={this.stopTimer}>
             <StopSkipButtons title={StopIcon} />
           </TouchableOpacity>
-
           {
             this.state.counting ?
-
             <TouchableOpacity activeOpacity={.8} onPress={this.pauseTimer}>
               <PlayPauseButton title={PauseIcon} />
             </TouchableOpacity> :
-
             <TouchableOpacity activeOpacity={.8} onPress={this.startTimer}>
               <PlayPauseButton title={PlayIcon} />
             </TouchableOpacity>
           }
-
           <TouchableOpacity activeOpacity={.8} onPress={this.skipTimer}>
             <StopSkipButtons title={SkipIcon} />
           </TouchableOpacity>
-
         </View>
       </LinearGradient>
     )
