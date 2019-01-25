@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
+import WorkCounter from './src/components/WorkCounter'
 
 
 export default class App extends Component<Props> {
@@ -20,7 +21,7 @@ export default class App extends Component<Props> {
     breakTimer: 2,
     bigBreakTimer: 10,
     completedWorkCount: 0,
-    workCountTotal: 2
+    workTotalForBigBreak: 2
   }
 
   componentDidMount = () => {
@@ -53,7 +54,7 @@ export default class App extends Component<Props> {
   }
 
   countDown = () => {
-    const { workTimer, breakTimer, bigBreakTimer, mode, completedWorkCount, workCountTotal } = this.state
+    const { workTimer, breakTimer, bigBreakTimer, mode, completedWorkCount, workTotalForBigBreak } = this.state
     let seconds = this.state.seconds - 1
     this.setState({
       time: this.secondsToTime(seconds),
@@ -61,11 +62,11 @@ export default class App extends Component<Props> {
     })
     if (seconds === 0) {
       // alarm
-      if (mode === 'WORK' && completedWorkCount === workCountTotal) {
+      if (mode === 'WORK' && completedWorkCount === workTotalForBigBreak) {
         this.setState({ mode: 'BIGBREAK', seconds: bigBreakTimer })
         this.resetDisplay(bigBreakTimer)
       }
-      if (mode === 'WORK' && completedWorkCount < workCountTotal) {
+      if (mode === 'WORK' && completedWorkCount < workTotalForBigBreak) {
         this.setState({ mode: 'BREAK', seconds: breakTimer, completedWorkCount: completedWorkCount + 1 })
         this.resetDisplay(breakTimer)
       }
@@ -157,6 +158,7 @@ export default class App extends Component<Props> {
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
+        <WorkCounter workCounter={this.state.completedWorkCount} />
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
 
