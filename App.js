@@ -20,7 +20,7 @@ export default class App extends Component<Props> {
     breakTimer: 2,
     bigBreakTimer: 10,
     completedWorkCount: 0,
-    workTotalForBigBreak: 2
+    workTotalForBigBreak: 3
   }
 
   componentDidMount = () => {
@@ -149,7 +149,7 @@ export default class App extends Component<Props> {
 
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
-        <WorkCounter workCounter={this.state.completedWorkCount} />
+        <WorkCounter style={styles.workCounter} workCounter={this.state.completedWorkCount} totalWorkCounter={this.state.workTotalForBigBreak} />
         <Timer time={this.state.time}/>
         <View style={styles.buttonRow}>
           <TouchableOpacity activeOpacity={.8} onPress={this.stopTimer}>
@@ -187,5 +187,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 60,
+  },
+  workCounter: {
+    flexDirection: 'row',
   }
 })
