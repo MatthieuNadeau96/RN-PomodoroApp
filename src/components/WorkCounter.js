@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: 20,
     marginHorizontal: 5,
     borderRadius: 100,
-    backgroundColor: '#d67e73'
+    backgroundColor: '#6EA95B'
   },
   greyDot: {
     height: 20,
