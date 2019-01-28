@@ -7,6 +7,7 @@ import {
 
 import moment from 'moment'
 
+import { Fonts } from '../utils/Fonts'
 
 export default class MyComponent extends Component {
 
@@ -22,8 +23,8 @@ export default class MyComponent extends Component {
 
 const styles = StyleSheet.create({
   timer: {
-    color: '#6c6c6c',
-    fontSize: 100,
-    fontWeight: '900',
+    color: '#444444',
+    fontSize: 120,
+    fontFamily: Fonts.RobotoCondensed
   },
 })
