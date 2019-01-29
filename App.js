@@ -7,6 +7,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
+import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
 
 
@@ -146,28 +147,41 @@ export default class App extends Component<Props> {
     const PauseIcon = (<Icon name="pause" size={35} color={iconColor} />)
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
+    const SettingsIcon = (<Icon name="cog" size={35} color={'#c9c9c9'} />)
 
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
-        <WorkCounter style={styles.workCounter} workCounter={this.state.completedWorkCount} totalWorkCounter={this.state.workTotalForBigBreak} />
-        <Timer time={this.state.time}/>
-        <View style={styles.buttonRow}>
-          <TouchableOpacity activeOpacity={.8} onPress={this.stopTimer}>
-            <StopSkipButtons title={StopIcon} />
-          </TouchableOpacity>
-          {
-            this.state.counting ?
-            <TouchableOpacity activeOpacity={.8} onPress={this.pauseTimer}>
-              <PlayPauseButton title={PauseIcon} />
-            </TouchableOpacity> :
-            <TouchableOpacity activeOpacity={.8} onPress={this.startTimer}>
-              <PlayPauseButton title={PlayIcon} />
-            </TouchableOpacity>
-          }
-          <TouchableOpacity activeOpacity={.8} onPress={this.skipTimer}>
-            <StopSkipButtons title={SkipIcon} />
-          </TouchableOpacity>
+        <View style={styles.settingsRow}>
+          <SettingsButton
+            style={styles.settingsButton}
+            title={SettingsIcon}
+            />
         </View>
+        <View style={styles.timerRow}>
+          <WorkCounter
+            style={styles.workCounter}
+            workCounter={this.state.completedWorkCount}
+            totalWorkCounter={this.state.workTotalForBigBreak}
+            />
+          <Timer time={this.state.time}/>
+        </View>
+          <View style={styles.buttonRow}>
+            <TouchableOpacity activeOpacity={.8} onPress={this.stopTimer}>
+              <StopSkipButtons title={StopIcon} />
+            </TouchableOpacity>
+            {
+              this.state.counting ?
+              <TouchableOpacity activeOpacity={.8} onPress={this.pauseTimer}>
+                <PlayPauseButton title={PauseIcon} />
+              </TouchableOpacity> :
+              <TouchableOpacity activeOpacity={.8} onPress={this.startTimer}>
+                <PlayPauseButton title={PlayIcon} />
+              </TouchableOpacity>
+            }
+            <TouchableOpacity activeOpacity={.8} onPress={this.skipTimer}>
+              <StopSkipButtons title={SkipIcon} />
+            </TouchableOpacity>
+          </View>
       </LinearGradient>
     )
   }
@@ -178,17 +192,26 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#F8F8F6',
-    paddingTop: 160,
-    paddingHorizontal: 30,
+    paddingTop: 15,
+    paddingHorizontal: 15,
+  },
+  workCounter: {
+    flexDirection: 'row',
+  },
+  settingsRow: {
+    flexDirection: 'row',
+    alignSelf: 'stretch',
+    justifyContent: 'flex-end',
+  },
+  timerRow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 90,
   },
   buttonRow: {
     flexDirection: 'row',
     alignSelf: 'stretch',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 60,
   },
-  workCounter: {
-    flexDirection: 'row',
-  }
 })
