@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 
+import { createStackNavigator, createAppContainer } from "react-navigation"
+
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -10,8 +12,11 @@ import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
 
+class App extends Component<Props> {
+  static navigationOptions = {
+    headerTitle:'Timer',
+  }
 
-export default class App extends Component<Props> {
   state = {
     seconds: 5,
     time: {},
@@ -152,7 +157,7 @@ export default class App extends Component<Props> {
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
         <View style={styles.settingsRow}>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
             <SettingsButton
               style={styles.settingsButton}
               title={SettingsIcon}
@@ -189,6 +194,34 @@ export default class App extends Component<Props> {
   }
 }
 
+class SettingsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Settings',
+  }
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Details Screen</Text>
+      </View>
+    );
+  }
+}
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: App,
+    Settings: SettingsScreen
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#FFFFFF'
+      }
+    }
+  }
+)
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -217,3 +250,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+
+export default createAppContainer(AppNavigator)
