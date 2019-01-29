@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
+import {Platform, StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native'
 
 import { createStackNavigator, createAppContainer } from "react-navigation"
 
@@ -13,8 +13,18 @@ import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
 
 class App extends Component<Props> {
-  static navigationOptions = {
-    headerTitle:'Timer',
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerTitle:'Timer',
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+          <SettingsButton
+            title={(<Icon name="cog" size={35} color={'#c9c9c9'} />)}
+            color='#fff'
+            />
+        </TouchableOpacity>
+      )
+    }
   }
 
   state = {
@@ -152,17 +162,11 @@ class App extends Component<Props> {
     const PauseIcon = (<Icon name="pause" size={35} color={iconColor} />)
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
-    const SettingsIcon = (<Icon name="cog" size={35} color={'#c9c9c9'} />)
 
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
         <View style={styles.settingsRow}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
-            <SettingsButton
-              style={styles.settingsButton}
-              title={SettingsIcon}
-              />
-          </TouchableOpacity>
+
         </View>
         <View style={styles.timerRow}>
           <WorkCounter
