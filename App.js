@@ -13,23 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
 import HeaderButtons, { HeaderButton, Item } from 'react-navigation-header-buttons'
 
-const FontAwesomeHeaderButton = passMeFurther => (
-  <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={35} color={'#c9c9c9'} />
-)
-
 class App extends Component<Props> {
-
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerTitle:'Timer',
-      headerRight: (
-        <HeaderButtons HeaderButtonComponent={FontAwesomeHeaderButton}>
-          <Item title="settings" iconName="cog" onPress={() => navigation.navigate('Settings')}/>
-        </HeaderButtons>
-      )
-    }
-  }
-
   state = {
     seconds: 5,
     time: {},
@@ -159,6 +143,17 @@ class App extends Component<Props> {
 
   }
 
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerTitle:'Timer',
+      headerRight: (
+        <HeaderButtons HeaderButtonComponent={FontAwesomeHeaderButton}>
+          <Item title="settings" iconName="cog" onPress={() => navigation.navigate('Settings')}/>
+        </HeaderButtons>
+      )
+    }
+  }
+
   render() {
     const iconColor = '#fafafa' // <-- icon font color
     const PlayIcon = (<Icon name="play" size={40} color={iconColor} />)
@@ -214,6 +209,10 @@ class SettingsScreen extends React.Component {
   }
 }
 
+const FontAwesomeHeaderButton = passMeFurther => (
+  <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={35} color={'#c9c9c9'} />
+)
+
 const AppNavigator = createStackNavigator(
   {
     Home: App,
@@ -257,6 +256,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
-
 
 export default createAppContainer(AppNavigator)
