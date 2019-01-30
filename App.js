@@ -143,17 +143,6 @@ class App extends Component<Props> {
 
   }
 
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerTitle:'Timer',
-      headerRight: (
-        <HeaderButtons HeaderButtonComponent={FontAwesomeHeaderButton}>
-          <Item title="settings" iconName="cog" onPress={() => navigation.navigate('Settings')}/>
-        </HeaderButtons>
-      )
-    }
-  }
-
   render() {
     const iconColor = '#fafafa' // <-- icon font color
     const PlayIcon = (<Icon name="play" size={40} color={iconColor} />)
@@ -194,7 +183,23 @@ class App extends Component<Props> {
       </LinearGradient>
     )
   }
+
+  static navigationOptions = ({navigation}) => {
+    return {
+      headerTitle:'Timer',
+      headerRight: (
+        <HeaderButtons HeaderButtonComponent={FontAwesomeHeaderButton}>
+          <Item title="settings" iconName="cog" onPress={() => navigation.navigate('Settings')}/>
+        </HeaderButtons>
+      )
+    }
+  }
+
 }
+
+const FontAwesomeHeaderButton = passMeFurther => (
+  <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={24} color={'#444444'} />
+)
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {
@@ -209,9 +214,6 @@ class SettingsScreen extends React.Component {
   }
 }
 
-const FontAwesomeHeaderButton = passMeFurther => (
-  <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={35} color={'#c9c9c9'} />
-)
 
 const AppNavigator = createStackNavigator(
   {
@@ -221,6 +223,7 @@ const AppNavigator = createStackNavigator(
   {
     initialRouteName: "Home",
     defaultNavigationOptions: {
+      headerTintColor: '#444444',
       headerStyle: {
         backgroundColor: '#FFFFFF'
       }
