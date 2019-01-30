@@ -3,26 +3,29 @@ import {Platform, StyleSheet, Text, View, TouchableOpacity, Button} from 'react-
 
 import { createStackNavigator, createAppContainer } from "react-navigation"
 
-import Icon from 'react-native-vector-icons/FontAwesome'
-import LinearGradient from 'react-native-linear-gradient'
-
 import Timer from './src/components/Timer'
 import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
 
+import Icon from 'react-native-vector-icons/FontAwesome'
+import LinearGradient from 'react-native-linear-gradient'
+import HeaderButtons, { HeaderButton, Item } from 'react-navigation-header-buttons'
+
+const FontAwesomeHeaderButton = passMeFurther => (
+  <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={35} color={'#c9c9c9'} />
+)
+
 class App extends Component<Props> {
+
   static navigationOptions = ({navigation}) => {
     return {
       headerTitle:'Timer',
       headerRight: (
-        <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-          <SettingsButton
-            title={(<Icon name="cog" size={35} color={'#c9c9c9'} />)}
-            color='#fff'
-            />
-        </TouchableOpacity>
+        <HeaderButtons HeaderButtonComponent={FontAwesomeHeaderButton}>
+          <Item title="settings" iconName="cog" onPress={() => navigation.navigate('Settings')}/>
+        </HeaderButtons>
       )
     }
   }
