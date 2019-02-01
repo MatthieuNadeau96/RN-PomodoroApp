@@ -9,7 +9,6 @@ import LinearGradient from 'react-native-linear-gradient'
 
 export default class PlayPauseButton extends Component {
   render() {
-
     return (
       <LinearGradient colors={['#6EA95B', '#5d8f4c', '#4f7a40']} locations={[0,0.6,1]} style={styles.button}>
         <Text>{this.props.title}</Text>

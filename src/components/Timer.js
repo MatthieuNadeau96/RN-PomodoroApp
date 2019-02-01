@@ -5,13 +5,9 @@ import {
   StyleSheet,
 } from 'react-native'
 
-import moment from 'moment'
-
 import { Fonts } from '../utils/Fonts'
 
 export default class MyComponent extends Component {
-
-
   render() {
     return (
       <Text style={styles.timer}>
