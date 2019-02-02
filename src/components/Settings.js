@@ -5,13 +5,29 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { Slider } from 'react-native-elements'
+
 export default class Settings extends Component {
+
+  state = {
+    value: 0
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Work Duration</Text>
-        <Text>Break Duration</Text>
-        <Text>Sessions before Big Break</Text>
+        <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
+          <Text>Work Duration</Text>
+          <Slider
+            value={this.state.value}
+            onValueChange={value => this.setState({ value })}
+            step={1}
+            minimumValue={0}
+            maximumValue={10}
+            thumbTintColor={'#5eb07a'}
+            animationType={'spring'}
+            />
+          <Text>Value: {this.state.value}</Text>
+        </View>
       </View>
     );
   }
