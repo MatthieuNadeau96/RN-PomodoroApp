@@ -8,6 +8,7 @@ import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
+import Settings from './src/components/Settings'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
@@ -201,15 +202,13 @@ const FontAwesomeHeaderButton = passMeFurther => (
   <HeaderButton {...passMeFurther} IconComponent={Icon} iconSize={24} color={'#444444'} />
 )
 
-class SettingsScreen extends React.Component {
+class SettingsScreen extends Component<Props> {
   static navigationOptions = {
     title: 'Settings',
   }
   render() {
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Details Screen</Text>
-      </View>
+      <Settings/>
     );
   }
 }
