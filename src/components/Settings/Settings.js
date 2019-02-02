@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F8F6',
     paddingTop: 15,
     paddingHorizontal: 15,
-  },
+    alignItems: 'flex-start',
+  }
 });
