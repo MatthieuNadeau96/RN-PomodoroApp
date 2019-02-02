@@ -11,13 +11,13 @@ export default class Options extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center' }}>
-        <Text>Work Duration</Text>
+        <Text>{this.props.optionTitle}</Text>
         <Slider
           value={this.props.value}
           onValueChange={this.props.change}
           step={1}
-          minimumValue={0}
-          maximumValue={10}
+          minimumValue={this.props.min}
+          maximumValue={this.props.max}
           thumbTintColor={'#5eb07a'}
           animationType={'spring'}
           />

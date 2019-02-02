@@ -10,15 +10,34 @@ import Options from './Options'
 export default class Settings extends Component {
 
   state = {
-    value: 0
+    workDuration: 0,
+    breakDuration: 0,
+    workSessionsBeforeBigBreak: 0,
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Options
-          value={this.state.value}
-          change={value => this.setState({ value })}
+          optionTitle={"Work Duration"}
+          min={0}
+          max={10}
+          value={this.state.workDuration}
+          change={workDuration => this.setState({ workDuration })}
+          />
+        <Options
+          optionTitle={"Break Duration"}
+          min={0}
+          max={10}
+          value={this.state.breakDuration}
+          change={breakDuration => this.setState({ breakDuration })}
+          />
+        <Options
+          optionTitle={"Work Sessions Before Big Break"}
+          min={2}
+          max={4}
+          value={this.state.workSessionsBeforeBigBreak}
+          change={workSessionsBeforeBigBreak => this.setState({ workSessionsBeforeBigBreak })}
           />
       </View>
     );
