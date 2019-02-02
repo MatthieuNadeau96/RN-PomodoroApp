@@ -35,7 +35,7 @@ export default class Settings extends Component {
         <Options
           optionTitle={"Work Sessions Before Big Break"}
           min={2}
-          max={4}
+          max={6}
           value={this.state.workSessionsBeforeBigBreak}
           change={workSessionsBeforeBigBreak => this.setState({ workSessionsBeforeBigBreak })}
           />
