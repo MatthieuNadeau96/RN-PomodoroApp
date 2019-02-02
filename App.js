@@ -8,7 +8,7 @@ import PlayPauseButton from './src/components/Buttons/PlayPauseButton'
 import StopSkipButtons from './src/components/Buttons/StopSkipButtons'
 import SettingsButton from './src/components/Buttons/SettingsButton'
 import WorkCounter from './src/components/WorkCounter'
-import Settings from './src/components/Settings'
+import Settings from './src/components/Settings/Settings'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LinearGradient from 'react-native-linear-gradient'
