@@ -153,9 +153,6 @@ class App extends Component<Props> {
 
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
-        <View style={styles.settingsRow}>
-
-        </View>
         <View style={styles.timerRow}>
           <WorkCounter
             style={styles.workCounter}
@@ -249,9 +246,9 @@ const styles = StyleSheet.create({
   timerRow: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 90,
   },
   buttonRow: {
+    paddingVertical: 30,
     flexDirection: 'row',
     alignSelf: 'stretch',
     alignItems: 'center',

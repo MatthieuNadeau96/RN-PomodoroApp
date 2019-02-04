@@ -19,6 +19,7 @@ export default class WorkCounter extends Component {
 const styles = StyleSheet.create({
   workCounter: {
     flexDirection: 'row',
+    paddingVertical: 30,
   },
   coloredDot: {
     height: 20,

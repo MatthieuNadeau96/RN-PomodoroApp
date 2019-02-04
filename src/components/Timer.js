@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   timer: {
     color: '#444444',
     fontSize: 120,
+    paddingVertical: 60,
     fontFamily: Fonts.RobotoCondensed
   },
 })
