@@ -17,11 +17,9 @@ import HeaderButtons, { HeaderButton, Item } from 'react-navigation-header-butto
 export default class HomeScreen extends Component {
 
   state = {
-    seconds: 5,
     time: {},
     counting: false,
     mode: 'WORK',
-    workTimer: 5,
     breakTimer: 2,
     bigBreakTimer: 10,
     completedWorkCount: 0,
@@ -29,7 +27,7 @@ export default class HomeScreen extends Component {
   }
 
   componentDidMount = () => {
-    this.resetDisplay(this.state.seconds)
+    this.resetDisplay(this.props.seconds)
   }
 
   resetDisplay = (secs) => {
@@ -57,8 +55,9 @@ export default class HomeScreen extends Component {
   }
 
   countDown = () => {
-    const { workTimer, breakTimer, bigBreakTimer, mode, completedWorkCount, workTotalForBigBreak } = this.state
-    let seconds = this.state.seconds - 1
+    const { mode, completedWorkCount, workTotalForBigBreak } = this.state
+    const { workTimer, breakTimer, bigBreakTimer } = this.props
+    let seconds = this.props.seconds - 1
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
@@ -99,7 +98,9 @@ export default class HomeScreen extends Component {
   }
 
   stopTimer = () => {
-    const { workTimer, breakTimer, bigBreakTimer, counting, mode } = this.state
+    const { counting, mode } = this.state
+    const { workTimer, breakTimer, bigBreakTimer } = this.props
+
     this.pauseTimer()
     if(mode === 'WORK') {
     this.resetDisplay(workTimer)
@@ -117,7 +118,7 @@ export default class HomeScreen extends Component {
   }
 
   timerCountDown = () => {
-    const { seconds } = this.state
+    const { seconds } = this.props
     this.progress = setInterval(() => {
       if (seconds <= 0) {
         clearInterval(this.progress)
@@ -129,7 +130,9 @@ export default class HomeScreen extends Component {
   }
 
   skipTimer = () => {
-    const { mode, workTimer, breakTimer, bigBreakTimer } = this.state
+    const { mode } = this.state
+    const { workTimer, breakTimer, bigBreakTimer } = this.props
+
     if (mode === 'WORK') {
       this.setState({ mode: 'BREAK', seconds: breakTimer })
       this.resetDisplay(breakTimer)
