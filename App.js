@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Text, View, } from 'react-native'
-import { createStackNavigator, createAppContainer } from "react-navigation"
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation"
 import HomeScreen from './src/screens/HomeScreen'
 
 
@@ -13,7 +13,6 @@ class Homie extends React.Component {
     );
   }
 }
-
 
 class SettingsScreen extends Component<Props> {
   static navigationOptions = {
@@ -33,7 +32,7 @@ class SettingsScreen extends Component<Props> {
   }
 }
 
-const AppNavigator = createStackNavigator(
+const TabNavigator = createBottomTabNavigator(
   {
     Home: Homie,
     Settings: SettingsScreen,
@@ -43,8 +42,7 @@ const AppNavigator = createStackNavigator(
   }
 )
 
-
-const AppContainer = createAppContainer(AppNavigator)
+const AppContainer = createAppContainer(TabNavigator)
 
 export default class App extends React.Component {
   render() {
