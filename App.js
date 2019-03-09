@@ -10,6 +10,9 @@ import SettingsScreen from './src/screens/SettingsScreen'
 class Home extends React.Component {
 
   state = {
+    workTimer: this.props.screenProps.workTimer,
+    breakTimer: this.props.screenProps.breakTimer,
+    bigBreakTimer: this.props.screenProps.bigBreakTimer,
     time: {},
     counting: false,
     mode: 'WORK',
@@ -47,8 +50,7 @@ class Home extends React.Component {
   }
 
   countDown = () => {
-    const { mode, completedWorkCount, workTotalForBigBreak } = this.state
-    const { workTimer, breakTimer, bigBreakTimer } = this.props
+    const { mode, completedWorkCount, workTotalForBigBreak, workTimer, breakTimer, bigBreakTimer  } = this.state
     console.log("counting down...")
     let seconds = this.state.seconds - 1
     this.setState({
@@ -93,8 +95,7 @@ class Home extends React.Component {
   }
 
   stopTimer = () => {
-    const { counting, mode } = this.state
-    const { workTimer, breakTimer, bigBreakTimer } = this.props
+    const { counting, mode, workTimer, breakTimer, bigBreakTimer } = this.state
 
     this.pauseTimer()
     if(mode === 'WORK') {
@@ -125,8 +126,7 @@ class Home extends React.Component {
   }
 
   skipTimer = () => {
-    const { mode } = this.state
-    const { workTimer, breakTimer, bigBreakTimer } = this.props
+    const { mode, workTimer, breakTimer, bigBreakTimer } = this.state
 
     if (mode === 'WORK') {
       this.setState({ mode: 'BREAK', seconds: breakTimer })
@@ -147,9 +147,6 @@ class Home extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <HomeScreen
-          workTimer={this.props.screenProps.workTimer}
-          breakTimer={this.props.screenProps.breakTimer}
-          bigBreakTimer={this.props.screenProps.bigBreakTimer}
           completedWorkCount={this.state.completedWorkCount}
           workTotalForBigBreak={this.state.workTotalForBigBreak}
           time={this.state.time}
@@ -176,9 +173,9 @@ class Settings extends React.Component {
     return (
       <View>
         <SettingsScreen
-          workDurationSetting = {this.props.workTimer}
-          breakDurationSetting = {this.props.breakDuration}
-          workSessionsBeforeBigBreakSetting = {this.props.workSessionsBeforeBigBreak}
+          workDurationSetting = {this.props.screenProps.workTimer}
+          breakDurationSetting = {this.props.screenProps.breakDuration}
+          workSessionsBeforeBigBreakSetting = {this.props.screenProps.workSessionsBeforeBigBreak}
         />
       </View>
     );
