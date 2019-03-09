@@ -6,16 +6,15 @@ import HomeScreen from './src/screens/HomeScreen'
 import SettingsScreen from './src/screens/SettingsScreen'
 
 class Homie extends React.Component {
-  state = {
-    workTime: 10,
-    seconds: 10,
-  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <HomeScreen
-          seconds={this.state.seconds}
-          workTimer={this.state.workTimer}
+          seconds={this.props.screenProps.seconds}
+          workTimer={this.props.screenProps.workTimer}
+          breakTimer={this.props.screenProps.breakTimer}
+          bigBreakTimer={this.props.screenProps.bigBreakTimer}
         />
       </View>
     );
@@ -57,9 +56,21 @@ const AppContainer = createAppContainer(TabNavigator)
 
 export default class App extends React.Component {
 
+  state = {
+    seconds: 5,
+    workTimer: 5,
+    breakTimer: 2,
+    bigBreakTimer: 10,
+  }
+
   render() {
     return (
-      <AppContainer/>
+      <AppContainer screenProps={{
+        seconds: this.state.seconds,
+        workTimer: this.state.workTimer,
+        breakTimer: this.state.breakTimer,
+        bigBreakTimer: this.state.bigBreakTimer,
+        }}/>
     )
   }
 }

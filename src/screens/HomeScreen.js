@@ -20,8 +20,6 @@ export default class HomeScreen extends Component {
     time: {},
     counting: false,
     mode: 'WORK',
-    breakTimer: 2,
-    bigBreakTimer: 10,
     completedWorkCount: 0,
     workTotalForBigBreak: 3
   }
