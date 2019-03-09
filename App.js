@@ -5,7 +5,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import HomeScreen from './src/screens/HomeScreen'
 import SettingsScreen from './src/screens/SettingsScreen'
 
-class Homie extends React.Component {
+class Home extends React.Component {
 
   render() {
     return (
@@ -21,7 +21,7 @@ class Homie extends React.Component {
   }
 }
 
-class Setty extends React.Component {
+class Settings extends React.Component {
   static navigationOptions = {
     title: 'Settings',
   }
@@ -44,8 +44,8 @@ class Setty extends React.Component {
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: Homie,
-    Settings: Setty,
+    Home: Home,
+    Settings: Settings,
   },
   {
     initialRouteName: 'Home',
