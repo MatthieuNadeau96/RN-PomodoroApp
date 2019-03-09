@@ -55,7 +55,7 @@ class Home extends React.Component {
     let seconds = this.state.seconds - 1
     this.setState({
       time: this.secondsToTime(seconds),
-      seconds: seconds, // <-- here is the problem
+      seconds: seconds,
     })
     console.log("time: " + seconds)
     if (seconds === 0) {
@@ -140,7 +140,6 @@ class Home extends React.Component {
       this.setState({ mode: 'WORK', seconds: workTimer })
       this.resetDisplay(workTimer)
     }
-
   }
 
   render() {
