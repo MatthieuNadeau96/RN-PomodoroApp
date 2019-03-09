@@ -5,6 +5,7 @@ import {
   StyleSheet,
 } from 'react-native'
 
+import LinearGradient from 'react-native-linear-gradient'
 import Options from '../components/Settings/Options'
 
 export default class SettingsScreen extends Component {
@@ -18,7 +19,7 @@ export default class SettingsScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
         <Text style={{ fontWeight: 'bold', fontSize: 17 }}>As of now these sliders don't do anything</Text>
         <Text>{this.props.workTimer}</Text>
         <Options
@@ -42,7 +43,7 @@ export default class SettingsScreen extends Component {
           value={this.state.bigBreakDuration}
           change={ bigBreakDuration => this.setState({ bigBreakDuration })}
           />
-      </View>
+      </LinearGradient>
     )
   }
 }
