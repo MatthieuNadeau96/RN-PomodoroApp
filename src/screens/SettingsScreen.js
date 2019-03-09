@@ -9,34 +9,38 @@ import Options from '../components/Settings/Options'
 
 export default class SettingsScreen extends Component {
 
-  // state = {
-  //   workDuration: 25,
-  //   breakDuration: 5,
-  //   workSessionsBeforeBigBreak: 3,
-  // }
+  state = {
+    workDuration: 0,
+    breakDuration: 0,
+    bigBreakDuration: 0,
+  }
 
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={{ fontWeight: 'bold', fontSize: 17 }}>As of now these sliders don't do anything</Text>
+        <Text>{this.props.workTimer}</Text>
         <Options
           optionTitle={"Work Duration"}
           min={5}
           max={60}
-          value={this.props.workDurationSetting}
+          value={0}
+          change={ (workDuration) => this.setState({ workDuration })}
           />
         <Options
           optionTitle={"Break Duration"}
           min={1}
           max={25}
-          value={this.props.breakDurationSetting}
+          value={this.state.breakDuration}
+          change={ breakDuration => this.setState({ breakDuration })}
           />
         <Options
           optionTitle={"Work Sessions Before Big Break"}
           min={2}
           max={6}
-          value={this.props.workSessionsBeforeBigBreakSetting}
+          value={this.state.bigBreakDuration}
+          change={ bigBreakDuration => this.setState({ bigBreakDuration })}
           />
       </View>
     )

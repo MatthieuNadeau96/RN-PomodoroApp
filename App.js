@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { Text, View, } from 'react-native'
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation"
-
+import { createMaterialTopTabNavigator } from 'react-navigation'
 import HomeScreen from './src/screens/HomeScreen'
 import SettingsScreen from './src/screens/SettingsScreen'
-
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 class Home extends React.Component {
@@ -170,22 +170,50 @@ class Settings extends React.Component {
     return (
       <View>
         <SettingsScreen
-          workDurationSetting = {this.props.screenProps.workTimer}
-          breakDurationSetting = {this.props.screenProps.breakDuration}
-          workSessionsBeforeBigBreakSetting = {this.props.screenProps.workSessionsBeforeBigBreak}
+          workTimer = {this.props.screenProps.workTimer}
+          breakTimer = {this.props.screenProps.breakDuration}
+          bigBreakTimer = {this.props.screenProps.workSessionsBeforeBigBreak}
         />
       </View>
     );
   }
 }
 
-const TabNavigator = createBottomTabNavigator(
+const TabNavigator = createMaterialTopTabNavigator(
   {
-    Home: Home,
-    Settings: Settings,
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="home" color={tintColor} size={24} />
+        )
+      }
+    },
+    Settings: {
+      screen: Settings,
+      navigationOptions: {
+        tabBarLabel: 'Settings',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="cog" color={tintColor} size={24} />
+        )
+      }
+    },
   },
   {
     initialRouteName: 'Home',
+    tabBarOptions: {
+      activeTintColor: '#6EA95B',
+      inactiveTintColor: '#666666',
+      style: {
+        backgroundColor: 'rgba(#f9f9f6, 0.29)'
+      },
+      indicatorStyle: {
+        height: 0,
+      },
+      showIcon: true,
+      showLabel: false,
+    }
   }
 )
 
@@ -202,11 +230,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <AppContainer screenProps={{
-        seconds: this.state.seconds,
-        workTimer: this.state.workTimer,
-        breakTimer: this.state.breakTimer,
-        bigBreakTimer: this.state.bigBreakTimer,
+      <AppContainer
+        style={{
+          backgroundColor: '#e9e9e9'
+        }}
+        screenProps={{
+          seconds: this.state.seconds,
+          workTimer: this.state.workTimer,
+          breakTimer: this.state.breakTimer,
+          bigBreakTimer: this.state.bigBreakTimer,
         }}/>
     )
   }
