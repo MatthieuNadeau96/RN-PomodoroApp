@@ -51,13 +51,11 @@ class Home extends React.Component {
 
   countDown = () => {
     const { mode, completedWorkCount, workTotalForBigBreak, workTimer, breakTimer, bigBreakTimer  } = this.state
-    console.log("counting down...")
     let seconds = this.state.seconds - 1
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
     })
-    console.log("time: " + seconds)
     if (seconds === 0) {
       // alarm
       if (mode === 'WORK' && completedWorkCount === workTotalForBigBreak - 1) {
