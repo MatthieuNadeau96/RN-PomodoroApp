@@ -201,6 +201,7 @@ const TabNavigator = createMaterialTopTabNavigator(
     },
   },
   {
+    tabBarPosition: 'bottom',
     initialRouteName: 'Home',
     tabBarOptions: {
       activeTintColor: '#6EA95B',
