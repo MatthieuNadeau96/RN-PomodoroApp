@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Text, View, } from 'react-native'
+import { Text, View, Button } from 'react-native'
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation"
 import { createMaterialTopTabNavigator } from 'react-navigation'
 import HomeScreen from './src/screens/HomeScreen'
@@ -153,6 +153,8 @@ class Home extends React.Component {
           startTimer={this.startTimer}
           skipTimer={this.skipTimer}
         />
+
+
       </View>
     );
   }
@@ -168,7 +170,7 @@ class Settings extends React.Component {
     const working = this.props.navigation.getParam('working', 'this works!')
 
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <SettingsScreen
           workTimer = {this.props.screenProps.workTimer}
           breakTimer = {this.props.screenProps.breakDuration}
@@ -202,7 +204,8 @@ const TabNavigator = createMaterialTopTabNavigator(
   },
   {
     tabBarPosition: 'bottom',
-    initialRouteName: 'Home',
+    swipeEnabled: false,
+    initialRouteName: 'Settings',
     tabBarOptions: {
       activeTintColor: '#6EA95B',
       inactiveTintColor: '#666666',
