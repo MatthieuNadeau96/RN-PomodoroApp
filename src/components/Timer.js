@@ -10,7 +10,7 @@ import { Fonts } from '../utils/Fonts'
 export default class MyComponent extends Component {
   render() {
     return (
-      <Text style={styles.timer}>
+      <Text style={this.props.darkThemeSwitch ? styles.darkTimer : styles.timer}>
         {this.props.time.m}:{this.props.time.s}
       </Text>
     )
@@ -24,4 +24,10 @@ const styles = StyleSheet.create({
     paddingVertical: 60,
     fontFamily: Fonts.RobotoCondensed
   },
+  darkTimer: {
+    color: '#f1f1f1',
+    fontSize: 120,
+    paddingVertical: 60,
+    fontFamily: Fonts.RobotoCondensed
+  }
 })

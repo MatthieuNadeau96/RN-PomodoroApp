@@ -23,14 +23,19 @@ export default class HomeScreen extends Component {
     const StopIcon = (<Icon name="stop" size={14} color={iconColor} />)
     const SkipIcon = (<Icon name="step-forward" size={14} color={iconColor} />)
     return (
-      <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
+      <LinearGradient
+        colors={this.props.darkThemeSwitch ? ['#5e5e5e', '#4d4c4c', '#373737'] : ['#FFFFFF', '#FBFAFB', '#F9FAF7']}
+        style={styles.container}>
         <View style={styles.timerRow}>
           <WorkCounter
             style={styles.workCounter}
             workCounter={this.props.completedWorkCount}
             totalWorkCounter={this.props.workTotalForBigBreak}
-            />
-          <Timer time={this.props.time}/>
+          />
+          <Timer
+            darkThemeSwitch={this.props.darkThemeSwitch}
+            time={this.props.time}
+          />
         </View>
           <View style={styles.buttonRow}>
             <TouchableOpacity activeOpacity={.8} onPress={this.props.stopTimer}>

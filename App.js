@@ -140,6 +140,7 @@ class Home extends React.Component {
     }
   }
 
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -152,6 +153,7 @@ class Home extends React.Component {
           pauseTimer={this.pauseTimer}
           startTimer={this.startTimer}
           skipTimer={this.skipTimer}
+          darkThemeSwitch={this.props.screenProps.darkThemeSwitch}
         />
 
 
@@ -175,7 +177,12 @@ class Settings extends React.Component {
           workTimer = {this.props.screenProps.workTimer}
           breakTimer = {this.props.screenProps.breakDuration}
           bigBreakTimer = {this.props.screenProps.workSessionsBeforeBigBreak}
+          switchChanged={this.props.screenProps.switchChanged}
+          darkThemeSwitch={this.props.screenProps.darkThemeSwitch}
         />
+        <Text>
+          Shit is {this.props.screenProps.darkThemeSwitch ? "On" : "Off"}
+        </Text>
       </View>
     );
   }
@@ -204,8 +211,7 @@ const TabNavigator = createMaterialTopTabNavigator(
   },
   {
     tabBarPosition: 'bottom',
-    swipeEnabled: false,
-    initialRouteName: 'Settings',
+    initialRouteName: 'Home',
     tabBarOptions: {
       activeTintColor: '#6EA95B',
       inactiveTintColor: '#666666',
@@ -230,19 +236,19 @@ export default class App extends React.Component {
     workTimer: 5,
     breakTimer: 2,
     bigBreakTimer: 10,
+    darkThemeSwitch: false,
   }
 
   render() {
     return (
       <AppContainer
-        style={{
-          backgroundColor: '#e9e9e9'
-        }}
         screenProps={{
           seconds: this.state.seconds,
           workTimer: this.state.workTimer,
           breakTimer: this.state.breakTimer,
           bigBreakTimer: this.state.bigBreakTimer,
+          darkThemeSwitch: this.state.darkThemeSwitch,
+          switchChanged: (darkThemeSwitch) => this.setState({darkThemeSwitch}),
         }}/>
     )
   }

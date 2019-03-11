@@ -11,37 +11,18 @@ import Options from '../components/Settings/Options'
 export default class SettingsScreen extends Component {
 
   state = {
-    workDuration: 0,
-    breakDuration: 0,
-    bigBreakDuration: 0,
+    workDuration: this.props.workTimer,
+    breakDuration: this.props.breakTimer,
+    bigBreakDuration: this.props.bigBreakTimer,
   }
 
-
   render() {
+
     return (
       <LinearGradient colors={['#FFFFFF', '#FBFAFB', '#F9FAF7']} style={styles.container}>
-        <Text style={{ fontWeight: 'bold', fontSize: 17 }}>As of now these sliders don't do anything</Text>
-        <Text>{this.props.workTimer}</Text>
         <Options
-          optionTitle={"Work Duration"}
-          min={5}
-          max={60}
-          value={0}
-          change={ (workDuration) => this.setState({ workDuration })}
-          />
-        <Options
-          optionTitle={"Break Duration"}
-          min={1}
-          max={25}
-          value={this.state.breakDuration}
-          change={ breakDuration => this.setState({ breakDuration })}
-          />
-        <Options
-          optionTitle={"Work Sessions Before Big Break"}
-          min={2}
-          max={6}
-          value={this.state.bigBreakDuration}
-          change={ bigBreakDuration => this.setState({ bigBreakDuration })}
+          switchChanged={this.props.switchChanged}
+          darkThemeSwitch={this.props.darkThemeSwitch}
           />
       </LinearGradient>
     )

@@ -4,29 +4,23 @@ import {
   Text,
   StyleSheet,
   Slider,
+  Switch,
 } from 'react-native';
 
 export default class Options extends Component {
+
+  state = {
+    value: false
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ alignItems: 'stretch', justifyContent: 'center' }}>
-          <View style={{flexDirection: 'row', fontSize: 60 }}>
-            <Text style={styles.text}>{this.props.optionTitle}: </Text>
-            <Text style={[styles.text, { paddingLeft: 5, fontWeight: 'bold', color: '#6EA95B' }]}>{this.props.value}</Text>
-          </View>
-          <Slider
-            value={this.props.value}
-            onValueChange={this.props.change}
-            step={1}
-            minimumValue={this.props.min}
-            maximumValue={this.props.max}
-            thumbTintColor={'#6EA95B'}
-            trackStyle={styles.trackStyle}
-            minimumTrackTintColor={'#608f51'}
-            maximumTrackTintColor={'#c9c9c9'}
-            />
-        </View>
+        <Text>Dark Theme: </Text>
+        <Switch
+          onValueChange={this.props.switchChanged}
+          value={this.props.darkThemeSwitch}
+          />
       </View>
     )
   }
